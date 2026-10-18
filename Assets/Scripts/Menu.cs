@@ -16,6 +16,9 @@ public class Menu : MonoBehaviour
         SceneManager.UnloadSceneAsync(gameObject.scene);
         //StartCoroutine(waitload(5));
     }
+    public void exit_button_clicked() { //playbutton
+        Application.Quit();
+    }
     /*
     private IEnumerator waitload(int time) {
         yield return new WaitForSeconds(time);

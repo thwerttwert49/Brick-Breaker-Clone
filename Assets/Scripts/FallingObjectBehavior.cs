@@ -10,6 +10,12 @@ public class FallingObjectBehavior : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         game_behavior = GameObject.Find("GameMain").GetComponent<GameBehavior>();
     }
+    void Update()
+    {
+        if (rigidbody.position.y < -5) {
+            Destroy(gameObject);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("Hit: " + collision.gameObject.name);
@@ -20,8 +26,10 @@ public class FallingObjectBehavior : MonoBehaviour
             brick.damage_brick(1);
             Destroy(gameObject);
         } else if (collision.gameObject.CompareTag("Player")) {
-            game_behavior = GameObject.Find("GameMain").GetComponent<GameBehavior>();
             game_behavior.lose_life();
+            Destroy(gameObject);
+        } else if (collision.gameObject.CompareTag("Ball")) {
+            game_behavior.add_score(50);
             Destroy(gameObject);
         }
     }
