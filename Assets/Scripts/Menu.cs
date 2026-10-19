@@ -4,16 +4,16 @@ using System.Collections;
 
 public class Menu : MonoBehaviour
 {
+    private GameBehavior game_behavior;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        game_behavior = GameObject.Find("GameMain").GetComponent<GameBehavior>();
     }
 
     public void play_button_clicked() { //playbutton
-        SceneManager.LoadScene("Level" + Random.Range(1, 3), LoadSceneMode.Additive);
-        SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(gameObject.scene);
+        //SceneManager.UnloadSceneAsync(gameObject.scene);
+        game_behavior.start_game();
         //StartCoroutine(waitload(5));
     }
     public void exit_button_clicked() { //playbutton

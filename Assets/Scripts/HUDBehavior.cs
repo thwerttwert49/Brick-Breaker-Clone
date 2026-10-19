@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
+using TMPro; //to use textmesh pro
 
 public class HUDBehavior : MonoBehaviour
 {

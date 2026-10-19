@@ -6,7 +6,7 @@ public class BallBehavior : MonoBehaviour
     [SerializeField]
     private float ball_speed;
     private Vector2 ball_start_position;
-
+    [SerializeField] private bool is_clone;
     private GameBehavior game_behavior;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,11 +28,16 @@ public class BallBehavior : MonoBehaviour
             ball_rb.linearVelocity = new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)); //in case ball gets stuck with no x velocity
         }
         if (ball_rb.position.y < -5) {
-            ball_rb.position = ball_start_position;
-            game_behavior = GameObject.Find("GameMain").GetComponent<GameBehavior>();
-            game_behavior.lose_life();
+            if (is_clone == false)
+            {
+                ball_rb.position = ball_start_position;
+                game_behavior = GameObject.Find("GameMain").GetComponent<GameBehavior>();
+                game_behavior.lose_life();
+            } else {
+                Destroy(gameObject);
+            }
         }
-        if (transform.localScale.x > 0.3) {
+        if (transform.localScale.x > 0.6) {
             transform.localScale -= new Vector3(0.0001f, 0.0001f, 0f);
         }
     }

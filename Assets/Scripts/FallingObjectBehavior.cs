@@ -29,7 +29,7 @@ public class FallingObjectBehavior : MonoBehaviour
             game_behavior.lose_life();
             Destroy(gameObject);
         } else if (collision.gameObject.CompareTag("Ball")) {
-            game_behavior.add_score(50);
+            game_behavior.add_score(50); //add score if destroyed by ball
             Destroy(gameObject);
         }
     }

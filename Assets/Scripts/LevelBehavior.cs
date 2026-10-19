@@ -7,10 +7,11 @@ public class LevelBehavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SceneManager.SetActiveScene(gameObject.scene); //so that instantiated prefabs will spawn in the level
         foreach (GameObject child in gameObject.scene.GetRootGameObjects()) {
             if (child.CompareTag("Brick")){
                 brick_count += 1;
-                Debug.Log("bricks: " + brick_count);
+                //Debug.Log("bricks: " + brick_count);
             }
         }
     }
